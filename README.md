@@ -1,6 +1,6 @@
-# wemapgl
+# Find Restaurant
 
-SDK Bản đồ WeMap trên Flutter
+SDK Bản đồ WeMap trên Flutter. Cho Phép tìm kiếm nhà hàng quanh khu vực gần chúng ta nhất
 
 ## IOS Configuration
 
