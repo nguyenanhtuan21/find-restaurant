@@ -38,7 +38,8 @@ class ChooseLocation extends StatefulWidget {
   ChooseLocationState createState() => ChooseLocationState();
 }
 
-class ChooseLocationState extends State<ChooseLocation> with SingleTickerProviderStateMixin {
+class ChooseLocationState extends State<ChooseLocation>
+    with SingleTickerProviderStateMixin {
   WeMapPlace? fromAddress;
   WeMapPlace? toAddress;
 
@@ -162,7 +163,8 @@ class ChooseLocationState extends State<ChooseLocation> with SingleTickerProvide
                         context,
                         MaterialPageRouteWithoutAnimation(
                           builder: (context) => WeMapSearch(
-                            location: widget.searchLocation ?? LatLng(21.03, 105.787),
+                            location:
+                                widget.searchLocation ?? LatLng(21.03, 105.787),
                             showYourLocation: true,
                             showChooseOnMap: true,
                             hintText: originHintText,
@@ -170,10 +172,14 @@ class ChooseLocationState extends State<ChooseLocation> with SingleTickerProvide
                               setState(() {
                                 fromAddress = place;
                               });
+                              debugPrint("test: $fromAddress");
                               widget.onSelectOriginPlace.call(fromAddress);
                             },
                             onTapYourLocation: () {
-                              fromAddress = WeMapPlace(location: widget.searchLocation, description: wemap_yourLocation);
+                              fromAddress = WeMapPlace(
+                                  location: widget.searchLocation,
+                                  description: wemap_yourLocation);
+                              debugPrint("test: $fromAddress");
                               widget.onSelectOriginPlace.call(fromAddress);
 
                               isDrivingStream.increment(true);
@@ -181,7 +187,8 @@ class ChooseLocationState extends State<ChooseLocation> with SingleTickerProvide
                             onTapChooseOnMap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => ChooseOnMap(
-                                        searchLocation: widget.searchLocation ?? LatLng(21.03, 105.787),
+                                        searchLocation: widget.searchLocation ??
+                                            LatLng(21.03, 105.787),
                                         iconImage: widget.destinationIcon,
                                         onChooseMap: originChooseMap,
                                       )));
@@ -206,14 +213,17 @@ class ChooseLocationState extends State<ChooseLocation> with SingleTickerProvide
                       SizedBox(
                         width: 20,
                         height: 50,
-                        child: Center(child: Icon(Icons.place, color: Colors.black, size: 20)),
+                        child: Center(
+                            child: Icon(Icons.place,
+                                color: Colors.black, size: 20)),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 40, right: 50),
                         child: Text(
                           searchTextFrom(),
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 16, color: Color(0xff323643)),
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xff323643)),
                         ),
                       )
                     ],
@@ -234,7 +244,8 @@ class ChooseLocationState extends State<ChooseLocation> with SingleTickerProvide
                       context,
                       MaterialPageRouteWithoutAnimation(
                         builder: (context) => WeMapSearch(
-                          location: widget.searchLocation ?? LatLng(21.03, 105.787),
+                          location:
+                              widget.searchLocation ?? LatLng(21.03, 105.787),
                           showYourLocation: true,
                           showChooseOnMap: true,
                           hintText: destinationHintText,
@@ -245,14 +256,17 @@ class ChooseLocationState extends State<ChooseLocation> with SingleTickerProvide
                             });
                           },
                           onTapYourLocation: () {
-                            toAddress = WeMapPlace(location: widget.searchLocation, description: wemap_yourLocation);
+                            toAddress = WeMapPlace(
+                                location: widget.searchLocation,
+                                description: wemap_yourLocation);
                             widget.onSelectDestinationPlace.call(toAddress);
                             isDrivingStream.increment(true);
                           },
                           onTapChooseOnMap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => ChooseOnMap(
-                                      searchLocation: widget.searchLocation ?? LatLng(21.03, 105.787),
+                                      searchLocation: widget.searchLocation ??
+                                          LatLng(21.03, 105.787),
                                       iconImage: widget.destinationIcon,
                                       onChooseMap: destinationChooseMap,
                                     )));
@@ -277,14 +291,17 @@ class ChooseLocationState extends State<ChooseLocation> with SingleTickerProvide
                     SizedBox(
                       width: 20,
                       height: 50,
-                      child: Center(child: Icon(Icons.near_me, color: Color.fromRGBO(0, 113, 188, 1), size: 20)),
+                      child: Center(
+                          child: Icon(Icons.near_me,
+                              color: Color.fromRGBO(0, 113, 188, 1), size: 20)),
                     ),
                     Padding(
                         padding: EdgeInsets.only(left: 40, right: 50),
                         child: Text(
                           searchTextTo(),
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 16, color: Color(0xff323643)),
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xff323643)),
                         ))
                   ],
                 ),
