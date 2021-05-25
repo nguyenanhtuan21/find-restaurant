@@ -99,12 +99,16 @@ class _WeMapSearchBarState extends State<WeMapSearchBar> {
     return Container(
       decoration: BoxDecoration(
         color: widget.changeBackground ? Colors.white : Colors.transparent,
-        boxShadow: widget.showShadow ? [BoxShadow(color: Colors.black38, blurRadius: 5)] : null,
+        boxShadow: widget.showShadow
+            ? [BoxShadow(color: Colors.black38, blurRadius: 5)]
+            : null,
       ),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.95,
         height: 47,
-        decoration: widget.changeBackground ? containerDecorationBar2() : containerDecorationBar1(),
+        decoration: widget.changeBackground
+            ? containerDecorationBar2()
+            : containerDecorationBar1(),
         margin: EdgeInsets.only(
             top: 10 + MediaQuery.of(context).padding.top,
             left: MediaQuery.of(context).size.width * 0.025,
@@ -129,7 +133,11 @@ class _WeMapSearchBarState extends State<WeMapSearchBar> {
                     padding: EdgeInsets.only(left: 21, right: 16),
                     child: Text(
                       searchValue ?? widget.hintText,
-                      style: TextStyle(fontSize: 16, color: searchValue == null ? Colors.black54 : Colors.black),
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: searchValue == null
+                              ? Colors.black54
+                              : Colors.black),
                       overflow: TextOverflow.ellipsis,
                     )),
                 onTap: () {
@@ -165,7 +173,11 @@ class _WeMapSearchBarState extends State<WeMapSearchBar> {
               )),
               Visibility(
                 visible: widget.isLoading,
-                child: Container(height: 23, width: 23, margin: EdgeInsets.fromLTRB(0, 0, 16, 0), child: CircularProgressIndicator(strokeWidth: 2.5)),
+                child: Container(
+                    height: 23,
+                    width: 23,
+                    margin: EdgeInsets.fromLTRB(0, 0, 16, 0),
+                    child: CircularProgressIndicator(strokeWidth: 2.5)),
               ),
               Visibility(
                 visible: searchValue != null,

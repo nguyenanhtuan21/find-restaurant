@@ -3,7 +3,7 @@ import 'package:wemapgl/wemapgl.dart';
 
 import 'ePage.dart';
 
-class FullMapPage extends EPage{
+class FullMapPage extends EPage {
   FullMapPage() : super(const Icon(Icons.map), 'Full screen map');
 
   @override
