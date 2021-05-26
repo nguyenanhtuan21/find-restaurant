@@ -389,6 +389,8 @@ class _WeMapSearchState extends State<WeMapSearch> with SingleTickerProviderStat
 
   void _selectPlace(WeMapPlace place) {
     debugPrint("ttttttttt $place");
+    debugPrint(place.toStringPlace());
+    debugPrint("ttttttttt $place");
     Navigator.pop(context); // Calls the `onSelected` callback
     widget.onSelected(place);
     //Save db
