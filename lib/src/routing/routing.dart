@@ -241,6 +241,8 @@ class WeMapDirectionState extends State<WeMapDirection> {
 
   Future<void> _onMapCreated(WeMapController controller) async {
     mapController = controller;
+
+    
   }
 
   Future<void> onSelected() async {
@@ -300,10 +302,27 @@ class WeMapDirectionState extends State<WeMapDirection> {
     indexStream.increment(0);
     _originPlace = _originPlace;
     _destinationPlace = _destinationPlace;
+    // pika fix
+    
+    debugPrint("Chính là chỗ này!");
+
+    // setState(() {
+    //   indexOfTab = 1;
+    //   debugPrint("qua 1!");
+    // });
+    // setState(() {
+    //   indexOfTab = 0;
+    //   debugPrint("qua 0!");
+    // });
+    
+
+    debugPrint("Chính là chỗ này!");
   }
+
 
   @override
   Widget build(BuildContext context) {
+    
     Size size = MediaQuery.of(context).size;
     _panelOpened = size.height - MediaQuery.of(context).padding.top;
     return Scaffold(
@@ -430,6 +449,7 @@ class WeMapDirectionState extends State<WeMapDirection> {
                                     await mapController?.clearLines();
                                     await WeMapDirections().loadRoute(mapController!, _route, insRoute, rootPreview, visible, indexOfTab, from!, to!);
                                   }
+                                  debugPrint("bấm bấm");
                                 }),
                           ),
                         ),
