@@ -73,8 +73,7 @@ class WeMapSearch extends StatefulWidget {
   _WeMapSearchState createState() => _WeMapSearchState();
 }
 
-class _WeMapSearchState extends State<WeMapSearch>
-    with SingleTickerProviderStateMixin {
+class _WeMapSearchState extends State<WeMapSearch> with SingleTickerProviderStateMixin {
   //Text field controller
   TextEditingController _textEditingController = TextEditingController();
 
@@ -130,8 +129,7 @@ class _WeMapSearchState extends State<WeMapSearch>
     });
 
     //Controller init and config
-    _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 70));
+    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 70));
     _animation = Tween(begin: 2.0, end: 0.0).animate(_controller);
 
     getDataDb();
@@ -154,8 +152,7 @@ class _WeMapSearchState extends State<WeMapSearch>
           child: AnimatedContainer(
               duration: Duration(milliseconds: 200),
               transform: Matrix4.rotationX(_animation.value),
-              margin:
-                  EdgeInsets.only(top: 67 + MediaQuery.of(context).padding.top),
+              margin: EdgeInsets.only(top: 67 + MediaQuery.of(context).padding.top),
               child: StreamBuilder(
                   stream: streamPlace.stream,
                   builder: (context, snapdata) {
@@ -163,14 +160,11 @@ class _WeMapSearchState extends State<WeMapSearch>
                       controller: _scrollController,
                       padding: EdgeInsets.zero,
                       children: !_showClearButton
-                          ? _originList(snapdata.data != null
-                              ? snapdata.data as List<WeMapPlace>
-                              : <WeMapPlace>[])
+                          ? _originList(snapdata.data != null ? snapdata.data as List<WeMapPlace> : <WeMapPlace>[])
                           : !_connectivity
                               ? <Widget>[
                                   Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       // Container(
@@ -184,15 +178,12 @@ class _WeMapSearchState extends State<WeMapSearch>
                                       SizedBox(height: 15),
                                       Icon(Icons.warning, color: Colors.red),
                                       SizedBox(height: 15),
-                                      Text(wemap_notConnection,
-                                          style:
-                                              TextStyle(color: Colors.black38))
+                                      Text(wemap_notConnection, style: TextStyle(color: Colors.black38))
                                     ],
                                   )
                                 ]
                               : _placesFromApi.map((place) {
-                                  return placeOption(place, _selectPlace,
-                                      isSearching: true);
+                                  return placeOption(place, _selectPlace, isSearching: true);
                                 }).toList(),
                     );
                   })),
@@ -200,9 +191,7 @@ class _WeMapSearchState extends State<WeMapSearch>
         Container(
           decoration: BoxDecoration(
             color: Colors.white,
-            boxShadow: _showShadow
-                ? [BoxShadow(color: Colors.black38, blurRadius: 5)]
-                : null,
+            boxShadow: _showShadow ? [BoxShadow(color: Colors.black38, blurRadius: 5)] : null,
           ),
           child: Container(
             width: MediaQuery.of(context).size.width * 0.95,
@@ -332,10 +321,7 @@ class _WeMapSearchState extends State<WeMapSearch>
                           child: CupertinoButton(
                             padding: EdgeInsets.all(0),
                             onPressed: () => deleteAllInHistory(),
-                            child: Text(wemap_deleteAll,
-                                style: TextStyle(
-                                    color: Color.fromRGBO(0, 113, 188, 1),
-                                    fontSize: 16)),
+                            child: Text(wemap_deleteAll, style: TextStyle(color: Color.fromRGBO(0, 113, 188, 1), fontSize: 16)),
                           )),
                     )
                   ],
@@ -348,8 +334,7 @@ class _WeMapSearchState extends State<WeMapSearch>
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         SizedBox(height: 32),
-                        Text(wemap_searchRecommend,
-                            textAlign: TextAlign.center),
+                        Text(wemap_searchRecommend, textAlign: TextAlign.center),
                         MaterialButton(
                           onPressed: () {
                             FocusScope.of(context).requestFocus(searchNode);
@@ -357,8 +342,7 @@ class _WeMapSearchState extends State<WeMapSearch>
                           child: Text(
                             wemap_searchNow,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color.fromRGBO(0, 113, 188, 1)),
+                            style: TextStyle(color: Color.fromRGBO(0, 113, 188, 1)),
                           ),
                         ),
                       ],
@@ -370,12 +354,9 @@ class _WeMapSearchState extends State<WeMapSearch>
           ),
         ] +
         getHsIntoWidget(
-          previousSearchesList:
-              getPlaceHistory(DateQuery.PREVIOUSSEARCHES, allPlace, limit: 7),
-          beforeYesterdayList:
-              getPlaceHistory(DateQuery.BEFOREYESTERDAY, allPlace, limit: 7),
-          yesterdayList:
-              getPlaceHistory(DateQuery.YESTERDAY, allPlace, limit: 7),
+          previousSearchesList: getPlaceHistory(DateQuery.PREVIOUSSEARCHES, allPlace, limit: 7),
+          beforeYesterdayList: getPlaceHistory(DateQuery.BEFOREYESTERDAY, allPlace, limit: 7),
+          yesterdayList: getPlaceHistory(DateQuery.YESTERDAY, allPlace, limit: 7),
           todayList: getPlaceHistory(DateQuery.TODAY, allPlace, limit: 7),
           selected: _selectPlace,
         ) +
@@ -430,8 +411,7 @@ class _WeMapSearchState extends State<WeMapSearch>
         });
       } else {
         _debounce = Timer(Duration(milliseconds: 300), () async {
-          final predictions = await widget.searchAPI
-              .getSearchResult(input, widget.location, widget.geocoder);
+          final predictions = await widget.searchAPI.getSearchResult(input, widget.location, widget.geocoder);
           if (this.mounted)
             setState(() {
               _connectivity = true;
@@ -456,9 +436,7 @@ BoxDecoration containerDecorationBar1() {
   return BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    boxShadow: [
-      BoxShadow(color: Colors.black38, offset: Offset(0, 1), blurRadius: 0.9)
-    ],
+    boxShadow: [BoxShadow(color: Colors.black38, offset: Offset(0, 1), blurRadius: 0.9)],
   );
 }
 
@@ -466,10 +444,7 @@ BoxDecoration containerDecorationBar2() {
   return BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    border: Border.all(
-        color: Colors.black.withOpacity(0.1),
-        style: BorderStyle.solid,
-        width: 0.8),
+    border: Border.all(color: Colors.black.withOpacity(0.1), style: BorderStyle.solid, width: 0.8),
   );
 }
 
@@ -479,15 +454,10 @@ class MaterialPageRouteWithoutAnimation<T> extends MaterialPageRoute<T> {
     RouteSettings? settings,
     bool maintainState = true,
     bool fullscreenDialog = false,
-  }) : super(
-            builder: builder,
-            maintainState: maintainState,
-            settings: settings,
-            fullscreenDialog: fullscreenDialog);
+  }) : super(builder: builder, maintainState: maintainState, settings: settings, fullscreenDialog: fullscreenDialog);
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
     return child;
   }
 }
