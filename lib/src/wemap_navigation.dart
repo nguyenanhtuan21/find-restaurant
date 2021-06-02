@@ -6,13 +6,15 @@ class WeMapNavigation {
     if (_instance == null) {
       final MethodChannel methodChannel = const MethodChannel('wemapgl');
       final EventChannel eventChannel = const EventChannel('wemapgl/arrival');
-      _instance = WeMapNavigation.private(methodChannel, eventChannel, onRouteProgress);
+      _instance =
+          WeMapNavigation.private(methodChannel, eventChannel, onRouteProgress);
     }
     return _instance!;
   }
 
   @visibleForTesting
-  WeMapNavigation.private(this._methodChannel, this._routeProgressEventChannel, this._routeProgressNotifier);
+  WeMapNavigation.private(this._methodChannel, this._routeProgressEventChannel,
+      this._routeProgressNotifier);
 
   static WeMapNavigation? _instance;
 
@@ -24,13 +26,19 @@ class WeMapNavigation {
   late StreamSubscription<bool> _routeProgressSubscription;
 
   ///Current Device OS Version
-  Future<String> get platformVersion => _methodChannel.invokeMethod('getPlatformVersion').then<String>((dynamic result) => result);
+  Future<String> get platformVersion => _methodChannel
+      .invokeMethod('getPlatformVersion')
+      .then<String>((dynamic result) => result);
 
   ///Total distance remaining in meters along route.
-  Future<double> get distanceRemaining => _methodChannel.invokeMethod<double>('getDistanceRemaining').then<double>((dynamic result) => result);
+  Future<double> get distanceRemaining => _methodChannel
+      .invokeMethod<double>('getDistanceRemaining')
+      .then<double>((dynamic result) => result);
 
   ///Total seconds remaining on all legs.
-  Future<double> get durationRemaining => _methodChannel.invokeMethod<double>('getDurationRemaining').then<double>((dynamic result) => result);
+  Future<double> get durationRemaining => _methodChannel
+      .invokeMethod<double>('getDurationRemaining')
+      .then<double>((dynamic result) => result);
 
   Future startNavigation({
     required Location origin,
@@ -74,7 +82,9 @@ class WeMapNavigation {
 
   Stream<bool> get _streamRouteProgress {
     if (_onRouteProgress == null) {
-      _onRouteProgress = _routeProgressEventChannel.receiveBroadcastStream().map((dynamic event) => _parseArrivalState(event));
+      _onRouteProgress = _routeProgressEventChannel
+          .receiveBroadcastStream()
+          .map((dynamic event) => _parseArrivalState(event));
     }
     return _onRouteProgress!;
   }
@@ -100,7 +110,11 @@ class NavigationView extends StatefulWidget {
   final bool? simulateRoute;
   final String? language;
 
-  NavigationView({required this.origin, required this.destination, this.simulateRoute, this.language});
+  NavigationView(
+      {required this.origin,
+      required this.destination,
+      this.simulateRoute,
+      this.language});
 
   _NavigationViewState createState() => _NavigationViewState();
 }
@@ -128,7 +142,10 @@ class _NavigationViewState extends State<NavigationView> {
     return SizedBox(
       height: 350,
       width: 350,
-      child: AndroidView(viewType: "wemap_gl", creationParams: args, creationParamsCodec: StandardMessageCodec()),
+      child: AndroidView(
+          viewType: "wemap_gl",
+          creationParams: args,
+          creationParamsCodec: StandardMessageCodec()),
     );
   }
 }

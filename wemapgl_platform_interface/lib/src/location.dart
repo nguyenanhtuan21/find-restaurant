@@ -10,7 +10,8 @@ class LatLng {
   /// The longitude is normalized to the half-open interval from -180.0
   /// (inclusive) to +180.0 (exclusive)
   const LatLng(double latitude, double longitude)
-      : latitude = (latitude < -90.0 ? -90.0 : (90.0 < latitude ? 90.0 : latitude)),
+      : latitude =
+            (latitude < -90.0 ? -90.0 : (90.0 < latitude ? 90.0 : latitude)),
         longitude = (longitude + 180.0) % 360.0 - 180.0;
 
   /// The latitude in degrees between -90.0 and 90.0, both inclusive.
@@ -55,7 +56,8 @@ class LatLngBounds {
   ///
   /// The latitude of the southwest corner cannot be larger than the
   /// latitude of the northeast corner.
-  LatLngBounds({required this.southwest, required this.northeast}) : assert(southwest.latitude <= northeast.latitude);
+  LatLngBounds({required this.southwest, required this.northeast})
+      : assert(southwest.latitude <= northeast.latitude);
 
   /// The southwest corner of the rectangle.
   final LatLng southwest;
@@ -72,7 +74,9 @@ class LatLngBounds {
     if (json == null) {
       return null;
     }
-    return LatLngBounds(southwest: LatLng._fromJson(json[0])!, northeast: LatLng._fromJson(json[1])!);
+    return LatLngBounds(
+        southwest: LatLng._fromJson(json[0])!,
+        northeast: LatLng._fromJson(json[1])!);
   }
 
   @override
@@ -82,7 +86,9 @@ class LatLngBounds {
 
   @override
   bool operator ==(Object o) {
-    return o is LatLngBounds && o.southwest == southwest && o.northeast == northeast;
+    return o is LatLngBounds &&
+        o.southwest == southwest &&
+        o.northeast == northeast;
   }
 
   @override
@@ -92,7 +98,11 @@ class LatLngBounds {
 /// A geographical area representing a non-aligned quadrilateral
 /// This class does not wrap values to the world bounds
 class LatLngQuad {
-  LatLngQuad({required this.topLeft, required this.topRight, required this.bottomRight, required this.bottomLeft});
+  LatLngQuad(
+      {required this.topLeft,
+      required this.topRight,
+      required this.bottomRight,
+      required this.bottomLeft});
 
   final LatLng topLeft;
 
@@ -103,7 +113,12 @@ class LatLngQuad {
   final LatLng bottomLeft;
 
   dynamic toList() {
-    return <dynamic>[topLeft.toJson(), topRight.toJson(), bottomRight.toJson(), bottomLeft.toJson()];
+    return <dynamic>[
+      topLeft.toJson(),
+      topRight.toJson(),
+      bottomRight.toJson(),
+      bottomLeft.toJson()
+    ];
   }
 
   @visibleForTesting
@@ -126,7 +141,11 @@ class LatLngQuad {
 
   @override
   bool operator ==(Object o) {
-    return o is LatLngQuad && o.topLeft == topLeft && o.topRight == topRight && o.bottomRight == bottomRight && o.bottomLeft == bottomLeft;
+    return o is LatLngQuad &&
+        o.topLeft == topLeft &&
+        o.topRight == topRight &&
+        o.bottomRight == bottomRight &&
+        o.bottomLeft == bottomLeft;
   }
 
   @override

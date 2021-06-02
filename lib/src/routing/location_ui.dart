@@ -178,7 +178,8 @@ class ChooseLocationState extends State<ChooseLocation>
                             onTapYourLocation: () {
                               
                               fromAddress = WeMapPlace(
-                                  location: widget.searchLocation ?? LatLng(21.03, 105.787) ,
+                                  location: widget.searchLocation ??
+                                      LatLng(21.03, 105.787),
                                   description: wemap_yourLocation);
                             
                             
@@ -263,6 +264,8 @@ class ChooseLocationState extends State<ChooseLocation>
                                 location: widget.searchLocation ??
                                           LatLng(21.03, 105.787),
                                 description: wemap_yourLocation);
+                            debugPrint(
+                                "123123123123213" + toAddress.toString());
                             widget.onSelectDestinationPlace.call(toAddress);
                             isDrivingStream.increment(true);
                           },
