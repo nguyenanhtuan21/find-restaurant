@@ -176,13 +176,16 @@ class ChooseLocationState extends State<ChooseLocation>
                               widget.onSelectOriginPlace.call(fromAddress);
                             },
                             onTapYourLocation: () {
+                              
                               fromAddress = WeMapPlace(
-                                  location: widget.searchLocation,
+                                  location: widget.searchLocation ?? LatLng(21.03, 105.787) ,
                                   description: wemap_yourLocation);
-                              debugPrint("test: $fromAddress");
+                            
+                            
                               widget.onSelectOriginPlace.call(fromAddress);
-
+                           
                               isDrivingStream.increment(true);
+                            
                             },
                             onTapChooseOnMap: () {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -257,7 +260,8 @@ class ChooseLocationState extends State<ChooseLocation>
                           },
                           onTapYourLocation: () {
                             toAddress = WeMapPlace(
-                                location: widget.searchLocation,
+                                location: widget.searchLocation ??
+                                          LatLng(21.03, 105.787),
                                 description: wemap_yourLocation);
                             widget.onSelectDestinationPlace.call(toAddress);
                             isDrivingStream.increment(true);

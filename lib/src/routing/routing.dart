@@ -239,14 +239,19 @@ class WeMapDirectionState extends State<WeMapDirection> {
   WeMapPlace? _originPlace;
   WeMapPlace? _destinationPlace;
 
-  Future<void> _onMapCreated(WeMapController controller) async {
-    mapController = controller;
+  // void _onMapCreated(WeMapController controller) {
+  //   mapController = controller; 
+  // } 
 
-    
+
+  
+  Future<void> _onMapCreated(WeMapController controller) async {
+    mapController = controller; 
   }
 
   Future<void> onSelected() async {
-    if (myLatLng == null && mapController != null) myLatLng = await mapController!.requestMyLocationLatLng();
+    if (myLatLng == null && mapController != null) 
+      myLatLng = await mapController!.requestMyLocationLatLng();
     fromHomeStream.increment(false);
     if ((_originPlace == null && _chooseKey.currentState != null && _chooseKey.currentState!.ori != null) ||
         (_originPlace != null && _chooseKey.currentState!.ori != null)) {
@@ -314,7 +319,7 @@ class WeMapDirectionState extends State<WeMapDirection> {
     //   indexOfTab = 0;
     //   debugPrint("qua 0!");
     // });
-    
+
 
     debugPrint("Chính là chỗ này!");
   }
@@ -449,7 +454,6 @@ class WeMapDirectionState extends State<WeMapDirection> {
                                     await mapController?.clearLines();
                                     await WeMapDirections().loadRoute(mapController!, _route, insRoute, rootPreview, visible, indexOfTab, from!, to!);
                                   }
-                                  debugPrint("bấm bấm");
                                 }),
                           ),
                         ),
