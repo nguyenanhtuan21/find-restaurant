@@ -368,7 +368,7 @@ class WeMapDirectionDetailsState extends State<WeMapDirectionDetails>
                             child: Container(
                               //decoration: _containerDecoration(),
                               child: isDrivingStream.data == true
-                                  ? _buttonNavigation()
+                                  ? _buttonCaculator()
                                   : _buttonCaculator(),
                             ),
                           ),

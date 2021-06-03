@@ -19,7 +19,7 @@ import 'scrolling_map.dart';
 import 'search.dart';
 import 'simpleDirection.dart';
 // my find restaurant
-import 'find_restaurant.dart';
+import 'caculate_money.dart';
 
 final List<EPage> _allPages = <EPage>[
   MapUiPage(),
@@ -35,7 +35,7 @@ final List<EPage> _allPages = <EPage>[
   PlaceFillPage(),
   PlaceGeoJSONPage(),
   ScrollingMapPage(),
-  FindRestaurant()
+  CaculateMoney()
 ];
 
 class MapsDemo extends StatelessWidget {
@@ -53,7 +53,10 @@ class MapsDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('WeMap examples')),
+      appBar: AppBar(
+        title: const Text('Caculate Money'),
+        backgroundColor: Color(0xFF151026),
+      ),
       body: ListView.builder(
         itemCount: _allPages.length,
         itemBuilder: (_, int index) => ListTile(
