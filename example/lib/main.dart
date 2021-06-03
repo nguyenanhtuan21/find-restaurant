@@ -19,7 +19,7 @@ import 'scrolling_map.dart';
 import 'search.dart';
 import 'simpleDirection.dart';
 // my find restaurant
-import 'caculate_money.dart';
+import 'calculate_money.dart';
 
 final List<EPage> _allPages = <EPage>[
   MapUiPage(),
@@ -35,7 +35,7 @@ final List<EPage> _allPages = <EPage>[
   PlaceFillPage(),
   PlaceGeoJSONPage(),
   ScrollingMapPage(),
-  CaculateMoney()
+  CalculateMoney()
 ];
 
 class MapsDemo extends StatelessWidget {

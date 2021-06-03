@@ -4,8 +4,8 @@ import 'package:wemapgl/wemapgl.dart';
 
 import 'ePage.dart';
 
-class CaculateMoney extends EPage {
-  CaculateMoney() : super(const Icon(Icons.money), 'Caculate Money');
+class CalculateMoney extends EPage {
+  CalculateMoney() : super(const Icon(Icons.money), 'Calculate Money');
 
   @override
   Widget build(BuildContext context) {
